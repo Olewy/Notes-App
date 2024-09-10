@@ -88,18 +88,14 @@ body {
   border: 0.1px solid rgba(0, 0, 0, 0.042);
 }
 
-.note-card:not(.selected-note) {
+.note-card:not(.selected-note-bg) {
   cursor: pointer;
 }
 
 .note-card:hover,
-.selected-note {
+.selected-note-bg {
   transform: translateY(-3px);
   box-shadow: var(--shadow);
-  background-color: rgba(var(--primary-color), 0.2);
-}
-
-.selected-note-bg {
   background-color: rgba(var(--primary-color), 0.2);
 }
 

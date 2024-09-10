@@ -58,7 +58,7 @@ function selectNote(id) {
   const noteEl = document.querySelectorAll(".note-card");
   noteEl.forEach((note) => {
     note.classList.remove("selected-note-bg");
-    if (id === note.id) {
+    if (id === Number(note.getAttribute("data-id"))) {
       note.classList.add("selected-note-bg");
     }
   });
@@ -67,10 +67,3 @@ function selectNote(id) {
   contentInputEl.value = selectedNote.content;
   console.log(id);
 }
-
-// function removeNoteBg() {
-//   const noteEl = document.querySelector(".note-card");
-//   noteEl.forEach((note) => {});
-// }
-
-// function addNoteBg() {}
