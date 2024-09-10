@@ -18,6 +18,8 @@ function saveNote(title, content, id) {
     });
   } else {
     // Inhalt einer Notiz soll nur überschrieben werden
+    // selectedNote.title = titleInputEl.value;
+    // selectedNote.content = contentInputEl.value;
   }
 
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(notes));

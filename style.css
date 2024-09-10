@@ -157,11 +157,6 @@ body {
   transition: all 0.3s ease;
 }
 
-.icon:hover {
-  color: #ffffff5d;
-  transform: scale(1.1);
-}
-
 #title-input {
   font-family: var(--secondary-font);
   font-size: 2.5rem;
@@ -196,6 +191,13 @@ body {
   border: none;
   border-radius: 5px;
   background-color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.save-note:hover > .icon,
+.delete-note:hover > .icon {
+  color: #ffffff5d;
+  transform: scale(1.1);
 }
 
 @media (max-width: 768px) {
