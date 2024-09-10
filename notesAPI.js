@@ -6,15 +6,18 @@ function getNotes() {
 
 function saveNote(title, content, id) {
   const notes = getNotes();
-  const selectedNote = notes.find((note) => note.id === id);
+  let selectedNote = notes.find((note) => note.id === id);
+  selectedNote = id;
 
-  if (selectedNote.id !== id) {
+  if (!id) {
     notes.push({
       title,
       content,
       id: getNextId(),
       lastUpdated: new Date().getTime(),
     });
+  } else {
+    // Inhalt einer Notiz soll nur überschrieben werden
   }
 
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(notes));
