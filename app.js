@@ -55,7 +55,22 @@ function selectNote(id) {
   const notes = getNotes();
   const selectedNote = notes.find((note) => note.id === id);
 
+  const noteEl = document.querySelectorAll(".note-card");
+  noteEl.forEach((note) => {
+    note.classList.remove("selected-note-bg");
+    if (id === note.id) {
+      note.classList.add("selected-note-bg");
+    }
+  });
+
   titleInputEl.value = selectedNote.title;
   contentInputEl.value = selectedNote.content;
   console.log(id);
 }
+
+// function removeNoteBg() {
+//   const noteEl = document.querySelector(".note-card");
+//   noteEl.forEach((note) => {});
+// }
+
+// function addNoteBg() {}

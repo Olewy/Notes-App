@@ -99,6 +99,10 @@ body {
   background-color: rgba(var(--primary-color), 0.2);
 }
 
+.selected-note-bg {
+  background-color: rgba(var(--primary-color), 0.2);
+}
+
 .note-title {
   font-family: var(--secondary-font);
   font-size: 1.2rem;

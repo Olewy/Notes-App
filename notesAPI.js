@@ -4,15 +4,18 @@ function getNotes() {
   return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
 }
 
-function saveNote(title, content) {
+function saveNote(title, content, id) {
   const notes = getNotes();
+  const selectedNote = notes.find((note) => note.id === id);
 
-  notes.push({
-    title,
-    content,
-    id: getNextId(),
-    lastUpdated: new Date().getTime(),
-  });
+  if (selectedNote.id !== id) {
+    notes.push({
+      title,
+      content,
+      id: getNextId(),
+      lastUpdated: new Date().getTime(),
+    });
+  }
 
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(notes));
 }
