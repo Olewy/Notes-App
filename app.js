@@ -35,7 +35,6 @@ function displayNotesList() {
 }
 
 function clickSaveButton() {
-  d;
   const title = titleInputEl.value;
   const content = contentInputEl.value;
 
