@@ -35,6 +35,7 @@ function displayNotesList() {
 }
 
 function clickSaveButton() {
+  d;
   const title = titleInputEl.value;
   const content = contentInputEl.value;
 
@@ -43,7 +44,15 @@ function clickSaveButton() {
     return;
   }
 
-  saveNote(title, content);
+  const selectedNote = document.querySelector(".selected-note-bg");
+
+  let id = undefined;
+
+  if (selectedNote) {
+    id = Number(selectedNote.getAttribute("data-id"));
+  }
+
+  saveNote(title, content, id);
 
   titleInputEl.value = "";
   contentInputEl.value = "";
@@ -65,5 +74,4 @@ function selectNote(id) {
 
   titleInputEl.value = selectedNote.title;
   contentInputEl.value = selectedNote.content;
-  console.log(id);
 }

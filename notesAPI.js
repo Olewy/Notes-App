@@ -7,7 +7,6 @@ function getNotes() {
 function saveNote(title, content, id) {
   const notes = getNotes();
   let selectedNote = notes.find((note) => note.id === id);
-  selectedNote = id;
 
   if (!id) {
     notes.push({
@@ -17,16 +16,15 @@ function saveNote(title, content, id) {
       lastUpdated: new Date().getTime(),
     });
   } else {
-    // Inhalt einer Notiz soll nur überschrieben werden
-    // selectedNote.title = titleInputEl.value;
-    // selectedNote.content = contentInputEl.value;
+    selectedNote.title = titleInputEl.value;
+    selectedNote.content = contentInputEl.value;
+    selectedNote.lastUpdated = new Date().getTime();
   }
 
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(notes));
 }
 
 function getNextId() {
-  console.log("Calling getNextId()");
   const notes = getNotes();
 
   const sortedNotes = notes.sort((noteA, noteB) => noteA.id - noteB.id);
@@ -37,7 +35,6 @@ function getNextId() {
     if (nextId < note.id) break;
 
     nextId = note.id + 1;
-    console.log(note);
   }
 
   return nextId;
