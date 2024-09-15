@@ -107,4 +107,6 @@ function newNoteButton() {
 
   titleInputEl.value = "";
   contentInputEl.value = "";
+
+  titleInputEl.focus();
 }
