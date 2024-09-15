@@ -2,8 +2,12 @@ const notesListEl = document.querySelector(".notes-list");
 const saveButtonEl = document.querySelector(".save-note");
 const titleInputEl = document.getElementById("title-input");
 const contentInputEl = document.getElementById("content-input");
+const createNewNoteEl = document.getElementById("create-new-note");
+const deleteButtonEl = document.querySelector(".delete-note");
 
 saveButtonEl.addEventListener("click", clickSaveButton);
+deleteButtonEl.addEventListener("click", clickDeleteButton);
+createNewNoteEl.addEventListener("click", newNoteButton);
 
 displayNotesList();
 
@@ -43,12 +47,12 @@ function clickSaveButton() {
     return;
   }
 
-  const selectedNote = document.querySelector(".selected-note-bg");
+  const currentlySelectedNote = document.querySelector(".selected-note-bg");
 
   let id = undefined;
 
-  if (selectedNote) {
-    id = Number(selectedNote.getAttribute("data-id"));
+  if (currentlySelectedNote) {
+    id = Number(currentlySelectedNote.getAttribute("data-id"));
   }
 
   saveNote(title, content, id);
@@ -60,7 +64,7 @@ function clickSaveButton() {
 }
 
 function selectNote(id) {
-  const notes = getNotes();
+  let notes = getNotes();
   const selectedNote = notes.find((note) => note.id === id);
 
   const noteEl = document.querySelectorAll(".note-card");
@@ -73,4 +77,34 @@ function selectNote(id) {
 
   titleInputEl.value = selectedNote.title;
   contentInputEl.value = selectedNote.content;
+}
+
+function clickDeleteButton() {
+  let notes = getNotes();
+
+  const currentlySelectedNote = document.querySelector(".selected-note-bg");
+
+  if (currentlySelectedNote) {
+    id = Number(currentlySelectedNote.getAttribute("data-id"));
+  }
+
+  let filteredNotes = notes.filter((note) => note.id !== id);
+  notes = filteredNotes;
+
+  titleInputEl.value = "";
+  contentInputEl.value = "";
+
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(notes));
+  displayNotesList();
+}
+
+function newNoteButton() {
+  const noteEl = document.querySelectorAll(".note-card");
+
+  noteEl.forEach((note) => {
+    note.classList.remove("selected-note-bg");
+  });
+
+  titleInputEl.value = "";
+  contentInputEl.value = "";
 }
