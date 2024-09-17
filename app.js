@@ -88,7 +88,7 @@ function clickDeleteButton() {
     id = Number(currentlySelectedNote.getAttribute("data-id"));
   }
 
-  let filteredNotes = notes.filter((note) => note.id !== id);
+  const filteredNotes = notes.filter((note) => note.id !== id);
   notes = filteredNotes;
 
   titleInputEl.value = "";

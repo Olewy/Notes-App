@@ -1,14 +1,12 @@
 :root {
   --primary-font: "Inter", sans-serif;
   --secondary-font: "Playfair Display", serif;
-  --bg-color: #f7f7f7;
-  --sidebar-bg: #ffffff;
-  --main-bg: #ffffff;
+  --bg-color: #1e1e1e;
   --primary-color: 58, 80, 107;
   --primary-color-hex: #3a506b;
   --secondary-color: #5bc0be;
-  --text-color: #0b132b;
-  --text-light: #6c7a89;
+  --text-color: #e3e3e3;
+  --text-color-placeholder: #e3e3e355;
   --border-color: #e0e0e0;
   --shadow: 0 4px 6px #0000001a;
 }
@@ -32,10 +30,11 @@ body {
 
 .sidebar {
   width: 300px;
-  background-color: var(--sidebar-bg);
+  background-color: var(--bg-color);
   padding: 2rem;
   overflow-y: auto;
   border-right: 1px solid var(--border-color);
+  border-color: black;
   transition: all 0.3s ease;
 }
 
@@ -50,8 +49,8 @@ body {
 .button {
   width: 100%;
   padding: 0.75rem;
-  background-color: var(--secondary-color);
-  color: white;
+  background-color: transparent;
+  color: var(--text-color);
   border: none;
   border-radius: 8px;
   font-size: 0.9rem;
@@ -65,7 +64,7 @@ body {
 }
 
 .button:hover {
-  background-color: #4ca5a3;
+  background-color: #474645;
   transform: translateY(-2px);
 }
 
@@ -85,30 +84,34 @@ body {
   border-radius: 8px;
   padding: 1.5rem;
   transition: all 0.3s ease;
-  border: 0.1px solid rgba(0, 0, 0, 0.042);
+  border-bottom: 0.2px solid #343434;
+  /* border: 0.1px solid rgba(0, 0, 0, 0.042); */
 }
 
 .note-card:not(.selected-note-bg) {
   cursor: pointer;
 }
 
-.note-card:hover,
-.selected-note-bg {
+.note-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow);
-  background-color: rgba(var(--primary-color), 0.2);
+  background-color: #474645;
+}
+
+.selected-note-bg {
+  background-color: #9c8127;
 }
 
 .note-title {
   font-family: var(--secondary-font);
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  color: var(--primary-color-hex);
+  color: var(--text-color);
 }
 
 .note-content-preview {
   font-size: 0.9rem;
-  color: var(--text-light);
+  color: var(--text-color);
   margin-bottom: 1rem;
 }
 
@@ -126,20 +129,20 @@ body {
   margin-top: 1.5rem;
   text-align: right;
   font-size: 0.7rem;
-  color: var(--text-light);
+  color: var(--text-color);
 }
 
 .main-content {
   flex-grow: 1;
   padding: 2rem;
-  background-color: var(--main-bg);
+  background-color: var(--bg-color);
   display: flex;
   flex-direction: column;
 }
 
 .main-content-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
   margin-bottom: 2rem;
 }
@@ -152,7 +155,7 @@ body {
 .icon {
   width: 1.5rem;
   height: 1.5rem;
-  color: #fff;
+  color: var(--text-color);
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -161,7 +164,7 @@ body {
   font-family: var(--secondary-font);
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--primary-color-hex);
+  color: var(--text-color);
   border: none;
   outline: none;
   width: 100%;
@@ -182,7 +185,7 @@ body {
 
 #content-input::placeholder,
 #title-input::placeholder {
-  color: #808080;
+  color: var(--text-color-placeholder);
 }
 
 .save-note,
@@ -190,14 +193,26 @@ body {
   padding: 0.75rem 1rem;
   border: none;
   border-radius: 5px;
-  background-color: var(--secondary-color);
+  background-color: transparent;
   cursor: pointer;
 }
 
 .save-note:hover > .icon,
 .delete-note:hover > .icon {
-  color: #ffffff5d;
+  /* color: #474645; */
+  /* background-color: #474645; */
   transform: scale(1.1);
+  transition: all 0.2s;
+}
+
+.save-note:hover,
+.delete-note:hover {
+  background-color: #474645;
+  transition: all 0.3s ease;
+}
+
+.delete-note:hover {
+  background-color: #ff0000ac;
 }
 
 @media (max-width: 768px) {
