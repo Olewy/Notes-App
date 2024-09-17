@@ -1,5 +1,5 @@
 :root {
-  --primary-font: "Inter", sans-serif;
+  --primary-font: "Montserrat", sans-serif;
   --secondary-font: "Playfair Display", serif;
   --bg-color: #1e1e1e;
   --primary-color: 58, 80, 107;
@@ -33,17 +33,12 @@ body {
   background-color: var(--bg-color);
   padding: 2rem;
   overflow-y: auto;
-  border-right: 1px solid var(--border-color);
-  border-color: black;
+  border-right: 1px solid #0000009d;
   transition: all 0.3s ease;
 }
 
-.sidebar:hover {
-  box-shadow: var(--shadow);
-}
-
 .create-new {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .button {
@@ -53,10 +48,10 @@ body {
   color: var(--text-color);
   border: none;
   border-radius: 8px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: hover 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,12 +60,15 @@ body {
 
 .button:hover {
   background-color: #474645;
-  transform: translateY(-2px);
+}
+
+button:focus {
+  outline: 1px solid white;
 }
 
 .svg-add {
-  width: 0.9rem;
-  height: 0.9rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 .notes-list {
@@ -84,26 +82,27 @@ body {
   border-radius: 8px;
   padding: 1.5rem;
   transition: all 0.3s ease;
-  border-bottom: 0.2px solid #343434;
-  /* border: 0.1px solid rgba(0, 0, 0, 0.042); */
+}
+
+.note-divider {
+  height: 1px;
+  width: 100%;
+  background-color: #3f3c3c;
 }
 
 .note-card:not(.selected-note-bg) {
   cursor: pointer;
 }
 
-.note-card:hover {
+.note-card:hover,
+.selected-note-bg {
   transform: translateY(-3px);
   box-shadow: var(--shadow);
   background-color: #474645;
 }
 
-.selected-note-bg {
-  background-color: #9c8127;
-}
-
 .note-title {
-  font-family: var(--secondary-font);
+  font-family: var(--primary-font);
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
   color: var(--text-color);
@@ -144,7 +143,7 @@ body {
   display: flex;
   justify-content: left;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .note-and-actions {
@@ -161,7 +160,7 @@ body {
 }
 
 #title-input {
-  font-family: var(--secondary-font);
+  font-family: var(--primary-color);
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--text-color);
@@ -183,8 +182,8 @@ body {
   background-color: transparent;
 }
 
-#content-input::placeholder,
-#title-input::placeholder {
+#title-input::placeholder,
+#content-input::placeholder {
   color: var(--text-color-placeholder);
 }
 
@@ -199,8 +198,6 @@ body {
 
 .save-note:hover > .icon,
 .delete-note:hover > .icon {
-  /* color: #474645; */
-  /* background-color: #474645; */
   transform: scale(1.1);
   transition: all 0.2s;
 }

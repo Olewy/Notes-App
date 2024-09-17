@@ -24,15 +24,16 @@ function displayNotesList() {
     html += `
           <div class="note-card" data-id="${note.id}" 
           onclick="selectNote(${note.id})">
-            <h3 class="note-title">${note.title}</h3>
+            <h3 class="note-title">${escapeHtml(note.title)}</h3>
             <p class="note-content-preview">
-            ${note.content}
+            ${escapeHtml(note.content)}
             </p>
             <p class="note-date">
             ${new Date(note.lastUpdated).toLocaleDateString("de-DE")}, 
             ${new Date(note.lastUpdated).toLocaleTimeString("de-DE")}
             </p>
-          </div>`;
+          </div>
+          <div class="note-divider"></div>`;
   });
 
   notesListEl.innerHTML = html;
@@ -109,4 +110,13 @@ function newNoteButton() {
   contentInputEl.value = "";
 
   titleInputEl.focus();
+}
+
+function escapeHtml(unsafe) {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
