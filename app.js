@@ -48,7 +48,7 @@ function clickSaveButton() {
     return;
   }
 
-  const currentlySelectedNote = document.querySelector(".selected-note-bg");
+  const currentlySelectedNote = document.querySelector(".selected-note");
 
   let id = undefined;
 
@@ -70,9 +70,9 @@ function selectNote(id) {
 
   const noteEl = document.querySelectorAll(".note-card");
   noteEl.forEach((note) => {
-    note.classList.remove("selected-note-bg");
+    note.classList.remove("selected-note");
     if (id === Number(note.getAttribute("data-id"))) {
-      note.classList.add("selected-note-bg");
+      note.classList.add("selected-note");
     }
   });
 
@@ -83,7 +83,7 @@ function selectNote(id) {
 function clickDeleteButton() {
   let notes = getNotes();
 
-  const currentlySelectedNote = document.querySelector(".selected-note-bg");
+  const currentlySelectedNote = document.querySelector(".selected-note");
 
   if (currentlySelectedNote) {
     id = Number(currentlySelectedNote.getAttribute("data-id"));
@@ -103,7 +103,7 @@ function newNoteButton() {
   const noteEl = document.querySelectorAll(".note-card");
 
   noteEl.forEach((note) => {
-    note.classList.remove("selected-note-bg");
+    note.classList.remove("selected-note");
   });
 
   titleInputEl.value = "";
