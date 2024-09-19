@@ -9,20 +9,22 @@
   --border-color: #e0e0e0;
   --focus: #fff;
   --icon: "\25D0";
+  --box-shadow: none;
 }
 
 .white {
   --primary-font: "Montserrat", sans-serif;
   --bg-color: #f7f7f7; /* Hintergrundfarbe */
   --primary-color: 58, 80, 107; /* Akzentfarbe (RGB-Wert) */
-  --primary-color-hex: #3a506b5a; /* Akzentfarbe (Hex-Wert) */
+  --primary-color-hex: #3a506b34; /* Akzentfarbe (Hex-Wert) */
   --secondary-color: #5bc0be; /* Sekundärfarbe */
   --text-color: #0b132b; /* Textfarbe */
   --text-color-placeholder: #6c7a89;
   --border-color: #e0e0e0; /* Randfarbe */
-  --shadow: 0 4px 6px #00000043; /* Schattenfarbe */
+  --shadow: 0 4px 6px #0000001f; /* Schattenfarbe */
   --focus: #000000;
   --icon: "\25D1";
+  --box-shadow: #0000008e;
 }
 
 * {
@@ -42,10 +44,19 @@ body {
   height: 100vh;
 }
 
+.sidebar-header {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background-color: var(--bg-color);
+  padding-top: 2rem;
+  padding-bottom: 0.5rem;
+}
+
 .sidebar {
   width: 300px;
   background-color: var(--bg-color);
-  padding: 2rem;
+  padding: 0 2rem 2rem 2rem;
   overflow-y: auto;
   border-right: 1px solid #0000009d;
   transition: all 0.3s ease;
@@ -53,7 +64,8 @@ body {
 }
 
 .create-new {
-  margin-bottom: 3rem;
+  margin: 0 auto 1rem auto;
+  cursor: pointer;
 }
 
 .create-new:hover {
@@ -63,7 +75,7 @@ body {
 
 .button,
 .dark-white-mode-button {
-  width: 100%;
+  width: fit-content;
   padding: 0.75rem;
   background-color: transparent;
   color: var(--text-color);
@@ -88,6 +100,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding-top: 1.5rem;
 }
 
 .note-card {
@@ -95,6 +108,10 @@ body {
   border-radius: 8px;
   padding: 1.5rem;
   transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-content: end;
 }
 
 .note-divider {
@@ -152,8 +169,6 @@ body {
 
 .main-content-actions {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 3rem;
   width: 100%;
 }
@@ -161,6 +176,8 @@ body {
 .note-and-actions {
   display: flex;
   gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .icon {
@@ -227,8 +244,6 @@ body {
 
 .dark-white-mode-button {
   width: fit-content;
-  margin-right: 0;
-  margin-left: 100%;
 }
 
 .button:hover {
@@ -251,6 +266,10 @@ body {
 }
 
 @media (max-width: 768px) {
+  .main-content {
+    border: 0.5px solid rgba(0, 0, 0, 0.338);
+  }
+
   .notes-app {
     flex-direction: column;
   }
@@ -258,5 +277,42 @@ body {
   .sidebar {
     width: 100%;
     max-height: 300px;
+  }
+
+  .button {
+    width: fit-content;
+  }
+
+  .note-card {
+    width: 70%;
+    margin: 0 auto 0 auto;
+    box-shadow: 1px 1px 5px var(--box-shadow);
+  }
+
+  .note-divider {
+    width: 70%;
+    margin: 0 auto 0 auto;
+  }
+
+  .sidebar-header {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .create-new {
+    align-self: last baseline;
+  }
+}
+
+@media (max-width: 456px) {
+  .note-divider {
+    width: 100%;
+    margin: 0 auto 0 auto;
+  }
+
+  .note-card {
+    width: 100%;
+    margin: 0 auto 0 auto;
+    box-shadow: 1px 1px 5px var(--box-shadow);
   }
 }
