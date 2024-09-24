@@ -6,19 +6,20 @@ function getNotes() {
 
 function saveNote(title, content, id) {
   const notes = getNotes();
-  let selectedNote = notes.find((note) => note.id === id);
+  let currentlySelectedNote = notes.find((note) => note.id === id);
 
   if (!id) {
     notes.push({
       title,
       content,
       id: getNextId(),
+      isFavorite: false,
       lastUpdated: new Date().getTime(),
     });
   } else {
-    selectedNote.title = titleInputEl.value;
-    selectedNote.content = contentInputEl.value;
-    selectedNote.lastUpdated = new Date().getTime();
+    currentlySelectedNote.title = titleInputEl.value;
+    currentlySelectedNote.content = contentInputEl.value;
+    currentlySelectedNote.lastUpdated = new Date().getTime();
   }
 
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(notes));

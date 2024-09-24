@@ -24,14 +24,20 @@ function displayNotesList() {
     html += `
           <div class="note-card" data-id="${note.id}" 
           onclick="selectNote(${note.id})">
+          <div class="note-header">
+            <svg id="starIcon" class="star-icon-disabled${
+              note.isFavorite ? " star-icon-enabled" : ""
+            }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+            </svg>
             <h3 class="note-title">${escapeHtml(note.title)}</h3>
-            <p class="note-content-preview">
+          </div>
+          <p class="note-content-preview">
             ${escapeHtml(note.content)}
-            </p>
-            <p class="note-date">
+          </p>
+          <p class="note-date">
             ${new Date(note.lastUpdated).toLocaleDateString("de-DE")}, 
             ${new Date(note.lastUpdated).toLocaleTimeString("de-DE")}
-            </p>
+          </p>
           </div>
           <div class="note-divider"></div>`;
   });
@@ -66,7 +72,7 @@ function clickSaveButton() {
 
 function selectNote(id) {
   let notes = getNotes();
-  const selectedNote = notes.find((note) => note.id === id);
+  const currentlySelectedNote = notes.find((note) => note.id === id);
 
   const noteEl = document.querySelectorAll(".note-card");
   noteEl.forEach((note) => {
@@ -76,8 +82,8 @@ function selectNote(id) {
     }
   });
 
-  titleInputEl.value = selectedNote.title;
-  contentInputEl.value = selectedNote.content;
+  titleInputEl.value = currentlySelectedNote.title;
+  contentInputEl.value = currentlySelectedNote.content;
 }
 
 function clickDeleteButton() {

@@ -141,10 +141,21 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.note-title::before {
-  content: "\2605";
-  color: gold;
-  font-size: 0.9rem;
+.note-header {
+  display: block;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.star-icon-disabled {
+  display: none;
+}
+
+.star-icon-enabled {
+  display: block;
+  fill: gold;
+  width: 1rem;
   margin-right: 0.5rem;
 }
 
@@ -196,7 +207,6 @@ body {
   height: 1.5rem;
   color: var(--text-color);
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 #title-input {
@@ -291,12 +301,12 @@ body {
   }
 
   .notes-app {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   .sidebar {
     width: 100%;
-    max-height: 300px;
+    max-height: 400px;
   }
 
   .button {
