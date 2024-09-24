@@ -17,7 +17,7 @@
   --primary-font: "Montserrat", sans-serif;
   --bg-color: #f9f6f6; /* Hintergrundfarbe */
   --primary-color: 58, 80, 107; /* Akzentfarbe (RGB-Wert) */
-  --primary-color-hex: #3a506b34; /* Akzentfarbe (Hex-Wert) */
+  --primary-color-hex: #3a506b0f; /* Akzentfarbe (Hex-Wert) */
   --secondary-color: #5bc0be; /* Sekundärfarbe */
   --text-color: #0b132b; /* Textfarbe */
   --text-color-placeholder: #6c7a89;
@@ -56,13 +56,39 @@ body {
   padding-bottom: 0.5rem;
 }
 
+.sidebar-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 99;
+  background-color: var(--bg-color);
+  margin-top: auto;
+  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+}
+
+.sort-favorites {
+  margin: 1rem auto 0 auto;
+  cursor: pointer;
+}
+
+.sort-favorites:hover {
+  transform: scale(1.05);
+  transition: all 0.2s;
+  transition: all 0.3s ease;
+}
+
+.sort-favorites::before {
+  content: "\2729";
+  padding-bottom: 0.25rem;
+}
+
 .sidebar {
+  height: 100vh;
   width: 300px;
   background-color: var(--bg-color);
-  padding: 0 2rem 2rem 2rem;
+  padding: 0 2rem;
   overflow-y: auto;
   border-right: 1px solid #0000009d;
-  transition: all 0.3s ease;
   color: var(--text-color);
 }
 
@@ -74,6 +100,7 @@ body {
 .create-new:hover {
   transform: scale(1.05);
   transition: all 0.2s;
+  transition: all 0.3s ease;
 }
 
 .button,
@@ -93,6 +120,11 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+}
+
+.dark-white-mode-button {
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .svg-add {
@@ -153,7 +185,7 @@ body {
 }
 
 .star-icon-enabled {
-  display: block;
+  display: inline;
   fill: gold;
   width: 1rem;
   margin-right: 0.5rem;
