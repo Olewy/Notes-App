@@ -5,6 +5,7 @@ const contentInputEl = document.getElementById("content-input");
 const createNewNoteEl = document.getElementById("create-new-note");
 const deleteButtonEl = document.querySelector(".delete-note");
 const showFavoritesButton = document.getElementById("sortFavoriteNotes");
+let isFavoritesOn = false;
 
 saveButtonEl.addEventListener("click", clickSaveButton);
 deleteButtonEl.addEventListener("click", clickDeleteButton);
@@ -12,10 +13,10 @@ createNewNoteEl.addEventListener("click", newNoteButton);
 
 displayNotesList();
 
-function displayNotesList(favoritesOnly = false) {
+function displayNotesList() {
   const notes = getNotes();
 
-  const filteredNotes = favoritesOnly
+  const filteredNotes = isFavoritesOn
     ? notes.filter((note) => note.isFavorite === true)
     : notes;
 
@@ -48,7 +49,22 @@ function displayNotesList(favoritesOnly = false) {
   notesListEl.innerHTML = html;
 }
 
-showFavoritesButton.addEventListener("click", displayNotesList);
+showFavoritesButton.addEventListener("click", toggleFavoriteButton);
+
+function toggleFavoriteButton() {
+  isFavoritesOn = !isFavoritesOn;
+
+  if (isFavoritesOn) {
+    showFavoritesButton.classList.add("sort-favorites-pressed");
+  } else {
+    showFavoritesButton.classList.remove("sort-favorites-pressed");
+  }
+
+  displayNotesList();
+
+  titleInputEl.value = "";
+  contentInputEl.value = "";
+}
 
 function clickSaveButton() {
   const title = titleInputEl.value;

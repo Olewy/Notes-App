@@ -21,7 +21,7 @@
     <div class="notes-app">
       <div class="sidebar">
         <div class="sidebar-header">
-          <button id="create-new-note" class="button create-new">
+          <button id="create-new-note" class="create-new">
             <svg
               class="svg-add"
               xmlns="http://www.w3.org/2000/svg"
@@ -39,13 +39,11 @@
             </svg>
             <span>Neue Notiz erstellen</span>
           </button>
-        </div>
-        <div class="notes-list"></div>
-        <div class="sidebar-footer">
-          <button id="sortFavoriteNotes" class="button sort-favorites">
-            <span>Favoriten</span>
+          <button id="sortFavoriteNotes" class="sort-favorites">
+            <span id="sortFavoriteNotesSpan">Favoriten</span>
           </button>
         </div>
+        <div class="notes-list"></div>
       </div>
 
       <div class="main-content">
