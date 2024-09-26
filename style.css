@@ -322,7 +322,6 @@ body {
 
 .save-note:hover,
 .delete-note:hover {
-  /* background-color: var(--primary-color-hex); */
   transition: all 0.3s ease;
 }
 
@@ -395,8 +394,9 @@ body {
     align-items: flex-end;
   }
 
-  .create-new {
-    align-self: last baseline;
+  .create-new,
+  .sort-favorites {
+    margin-right: 2rem;
   }
 }
 
