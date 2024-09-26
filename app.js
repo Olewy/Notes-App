@@ -5,6 +5,7 @@ const contentInputEl = document.getElementById("content-input");
 const createNewNoteEl = document.getElementById("create-new-note");
 const deleteButtonEl = document.querySelector(".delete-note");
 const showFavoritesButton = document.getElementById("sortFavoriteNotes");
+const sidebarEl = document.querySelector(".sidebar");
 let isFavoritesOn = false;
 
 saveButtonEl.addEventListener("click", clickSaveButton);
@@ -47,6 +48,13 @@ function displayNotesList() {
   });
 
   notesListEl.innerHTML = html;
+
+  if (notesListEl.innerHTML == []) {
+    const noNotesEl = document.createElement("p");
+    noNotesEl.textContent = "no notes here";
+    noNotesEl.classList.add("no-notes-text-enabled");
+    notesListEl.append(noNotesEl);
+  }
 }
 
 showFavoritesButton.addEventListener("click", toggleFavoriteButton);
@@ -55,9 +63,9 @@ function toggleFavoriteButton() {
   isFavoritesOn = !isFavoritesOn;
 
   if (isFavoritesOn) {
-    showFavoritesButton.classList.add("sort-favorites-pressed");
+    showFavoritesButton.classList.add("sort-favorites-button-pressed");
   } else {
-    showFavoritesButton.classList.remove("sort-favorites-pressed");
+    showFavoritesButton.classList.remove("sort-favorites-button-pressed");
   }
 
   displayNotesList();
@@ -123,6 +131,7 @@ function clickDeleteButton() {
   contentInputEl.value = "";
 
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(notes));
+
   displayNotesList();
 }
 

@@ -123,9 +123,18 @@ body {
   padding-bottom: 0.25rem;
 }
 
-.sort-favorites-pressed {
+.sort-favorites-button-pressed {
   background-color: gold;
   color: black;
+  border: none;
+}
+
+.no-notes-text-enabled {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-color-placeholder);
+  margin: 0 auto;
+  line-height: 1.5rem;
 }
 
 .button,
