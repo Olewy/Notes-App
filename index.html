@@ -42,6 +42,17 @@
           <button id="sortFavoriteNotes" class="sort-favorites">
             <span id="sortFavoriteNotesSpan">Favoriten</span>
           </button>
+          <form class="form">
+            <input
+              type="text"
+              id="searchNotes"
+              class="input-search-note"
+              placeholder="suche Notizen..."
+            />
+            <button type="submit" id="search" class="search-results">
+              &#9906;
+            </button>
+          </form>
         </div>
         <div class="notes-list"></div>
       </div>
@@ -93,7 +104,7 @@
         <input type="text" id="title-input" placeholder="Titel" />
         <textarea
           id="content-input"
-          placeholder="type some notes in here..."
+          placeholder="tippe hier deine Notizen ein..."
         ></textarea>
       </div>
     </div>

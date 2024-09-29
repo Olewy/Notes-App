@@ -6,11 +6,14 @@ const createNewNoteEl = document.getElementById("create-new-note");
 const deleteButtonEl = document.querySelector(".delete-note");
 const showFavoritesButton = document.getElementById("sortFavoriteNotes");
 const sidebarEl = document.querySelector(".sidebar");
+const searchNotesEl = document.getElementById("searchNotes");
 let isFavoritesOn = false;
 
 saveButtonEl.addEventListener("click", clickSaveButton);
 deleteButtonEl.addEventListener("click", clickDeleteButton);
 createNewNoteEl.addEventListener("click", newNoteButton);
+showFavoritesButton.addEventListener("click", toggleFavoriteButton);
+searchNotesEl.addEventListener("click", searchNotesButton);
 
 displayNotesList();
 
@@ -51,13 +54,11 @@ function displayNotesList() {
 
   if (notesListEl.innerHTML == []) {
     const noNotesEl = document.createElement("p");
-    noNotesEl.textContent = "no notes here";
+    noNotesEl.textContent = "noch keine Notizen hier";
     noNotesEl.classList.add("no-notes-text-enabled");
     notesListEl.append(noNotesEl);
   }
 }
-
-showFavoritesButton.addEventListener("click", toggleFavoriteButton);
 
 function toggleFavoriteButton() {
   isFavoritesOn = !isFavoritesOn;
@@ -72,6 +73,10 @@ function toggleFavoriteButton() {
 
   titleInputEl.value = "";
   contentInputEl.value = "";
+}
+
+function searchNotesButton() {
+  const input = searchNotesEl.value;
 }
 
 function clickSaveButton() {
