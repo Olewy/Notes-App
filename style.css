@@ -120,7 +120,7 @@ body {
 
 .sort-favorites::before {
   content: "\2729";
-  padding-bottom: 0.25rem;
+  padding-bottom: 0.2rem;
 }
 
 .sort-favorites-button-pressed {
@@ -427,12 +427,31 @@ body {
 
   .sidebar-header {
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    justify-content: center;
+    align-items: first baseline;
+    /* align-items: flex-end; */
+  }
+
+  .form {
+    margin: 0;
+    padding: 0;
+    border-top: none;
+  }
+
+  .input-search-note {
+    min-width: 50%;
   }
 
   .create-new,
   .sort-favorites {
     margin-right: 2rem;
+    font-size: 1rem;
+    padding: 0.3rem;
+  }
+
+  .create-new {
+    font-size: 1.05rem;
   }
 }
 

@@ -26,9 +26,13 @@ function displayNotesList(searchTerm = "") {
   const notes = getNotes();
 
   const filteredNotes = isFavoritesOn
-    ? notes.filter((note) => note.isFavorite === true)
-    : notes &&
-      notes.filter((note) => {
+    ? notes.filter((note) => {
+        return (
+          note.isFavorite && (note.title.toLowerCase().includes(searchTerm) ||
+          note.content.toLowerCase().includes(searchTerm))
+        );
+      })
+    : notes.filter((note) => {
         return (
           note.title.toLowerCase().includes(searchTerm) ||
           note.content.toLowerCase().includes(searchTerm)
