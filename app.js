@@ -6,23 +6,51 @@ const createNewNoteEl = document.getElementById("create-new-note");
 const deleteButtonEl = document.querySelector(".delete-note");
 const showFavoritesButton = document.getElementById("sortFavoriteNotes");
 const sidebarEl = document.querySelector(".sidebar");
-const searchNotesEl = document.getElementById("searchNotes");
+const searchNotesInput = document.getElementById("searchNotes");
+const searchButtonEl = document.getElementById("search");
+
 let isFavoritesOn = false;
 
 saveButtonEl.addEventListener("click", clickSaveButton);
 deleteButtonEl.addEventListener("click", clickDeleteButton);
 createNewNoteEl.addEventListener("click", newNoteButton);
 showFavoritesButton.addEventListener("click", toggleFavoriteButton);
-searchNotesEl.addEventListener("click", searchNotesButton);
+searchNotesInput.addEventListener("input", function () {
+  const searchTerm = searchNotesInput.value.toLowerCase();
+  displayNotesList(searchTerm);
+});
+
+// searchNotesInput.addEventListener("input", (e) => {
+//   const value = e.target.value.toLowerCase();
+//   notes.forEach((note) => {
+//     const isVisible =
+//       note.title.toLowerCase().includes(value) ||
+//       note.content.toLowerCase().includes(value);
+//     notes.element.classList.toggle("hide-notes", !isVisible);
+//   });
+// });
 
 displayNotesList();
 
-function displayNotesList() {
+function displayNotesList(searchTerm = "") {
   const notes = getNotes();
+
+  // const filteredSearchbarNotes = notes.filter((note) => {
+  //   return (
+  //     note.title.toLowerCase().includes(searchTerm) ||
+  //     note.content.toLowerCase().includes(searchTerm)
+  //   );
+  // });
 
   const filteredNotes = isFavoritesOn
     ? notes.filter((note) => note.isFavorite === true)
-    : notes;
+    : notes &&
+      notes.filter((note) => {
+        return (
+          note.title.toLowerCase().includes(searchTerm) ||
+          note.content.toLowerCase().includes(searchTerm)
+        );
+      });
 
   const sortedNotes = filteredNotes.sort(
     (noteA, noteB) => noteB.lastUpdated - noteA.lastUpdated
@@ -53,7 +81,7 @@ function displayNotesList() {
   notesListEl.innerHTML = html;
 
   if (notesListEl.innerHTML == []) {
-    const noNotesEl = document.createElement("p");
+    let noNotesEl = document.createElement("p");
     noNotesEl.textContent = "noch keine Notizen hier";
     noNotesEl.classList.add("no-notes-text-enabled");
     notesListEl.append(noNotesEl);
@@ -75,9 +103,30 @@ function toggleFavoriteButton() {
   contentInputEl.value = "";
 }
 
-function searchNotesButton() {
-  const input = searchNotesEl.value;
-}
+// function searchNotesButton() {
+//   const notes = getNotes();
+
+//   const input = searchNotesInput.value;
+
+//   const filteredNotes = isFavoritesOn
+//     ? notes.filter((note) => note.isFavorite === true)
+//     : notes;
+
+//   const sortedNotes = filteredNotes.sort(
+//     (noteA, noteB) => noteB.lastUpdated - noteA.lastUpdated
+//   );
+
+//   sortedNotes.forEach((note) => {
+//     if (input == note.title.textContent) {
+//       document.getElementById("output").innerHTML = "Apple";
+//       console.log("1");
+//     } else if (input == note.content.textContent) {
+//       console.log("2");
+//     } else if (input !== note.title || input !== note.content) {
+//       console.log("3");
+//     }
+//   });
+// }
 
 function clickSaveButton() {
   const title = titleInputEl.value;
