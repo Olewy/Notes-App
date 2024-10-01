@@ -163,12 +163,6 @@ body {
   font-size: 1.5rem;
   font-weight: 400;
   transform: rotate(-45deg);
-  cursor: pointer;
-}
-
-.search-results:hover {
-  scale: 1.3;
-  transition: all 0.2s;
 }
 
 .no-notes-text-enabled {

@@ -20,27 +20,10 @@ searchNotesInput.addEventListener("input", function () {
   displayNotesList(searchTerm);
 });
 
-// searchNotesInput.addEventListener("input", (e) => {
-//   const value = e.target.value.toLowerCase();
-//   notes.forEach((note) => {
-//     const isVisible =
-//       note.title.toLowerCase().includes(value) ||
-//       note.content.toLowerCase().includes(value);
-//     notes.element.classList.toggle("hide-notes", !isVisible);
-//   });
-// });
-
 displayNotesList();
 
 function displayNotesList(searchTerm = "") {
   const notes = getNotes();
-
-  // const filteredSearchbarNotes = notes.filter((note) => {
-  //   return (
-  //     note.title.toLowerCase().includes(searchTerm) ||
-  //     note.content.toLowerCase().includes(searchTerm)
-  //   );
-  // });
 
   const filteredNotes = isFavoritesOn
     ? notes.filter((note) => note.isFavorite === true)
@@ -102,31 +85,6 @@ function toggleFavoriteButton() {
   titleInputEl.value = "";
   contentInputEl.value = "";
 }
-
-// function searchNotesButton() {
-//   const notes = getNotes();
-
-//   const input = searchNotesInput.value;
-
-//   const filteredNotes = isFavoritesOn
-//     ? notes.filter((note) => note.isFavorite === true)
-//     : notes;
-
-//   const sortedNotes = filteredNotes.sort(
-//     (noteA, noteB) => noteB.lastUpdated - noteA.lastUpdated
-//   );
-
-//   sortedNotes.forEach((note) => {
-//     if (input == note.title.textContent) {
-//       document.getElementById("output").innerHTML = "Apple";
-//       console.log("1");
-//     } else if (input == note.content.textContent) {
-//       console.log("2");
-//     } else if (input !== note.title || input !== note.content) {
-//       console.log("3");
-//     }
-//   });
-// }
 
 function clickSaveButton() {
   const title = titleInputEl.value;
