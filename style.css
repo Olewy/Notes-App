@@ -132,6 +132,7 @@ body {
 
 .form {
   display: flex;
+  align-items: center;
   padding: 1rem 2rem 0 2rem;
   border-top: 1px solid black;
 }
@@ -161,7 +162,7 @@ body {
   width: fit-content;
   background-color: transparent;
   color: var(--text-color);
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 400;
   transform: rotate(-45deg);
 }
@@ -443,13 +444,15 @@ body {
 
   .input-search-note {
     min-width: 50%;
+    padding: 0.67rem;
+    font-size: 12px;
   }
 
   .create-new,
   .sort-favorites {
     margin: 0;
     font-size: 12px;
-    padding: 0.3rem;
+    padding: 0.67rem;
     text-align: left;
   }
 
@@ -466,6 +469,10 @@ body {
   #content-input {
     font-size: 1rem;
   }
+
+  .svg {
+    display: none;
+  }
 }
 
 @media (max-width: 456px) {
@@ -478,5 +485,23 @@ body {
     width: 100%;
     margin: 0 auto 0 auto;
     box-shadow: 1px 1px 5px var(--box-shadow);
+  }
+
+  .input-search-note {
+    min-width: 50%;
+    padding: 0.67rem;
+  }
+
+  .create-new,
+  .sort-favorites {
+    font-size: 12px;
+    padding: 0.4rem;
+    text-align: left;
+  }
+
+  .input-search-note {
+    min-width: 50%;
+    padding: 0.4rem;
+    font-size: 12px;
   }
 }
