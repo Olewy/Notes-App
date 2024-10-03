@@ -504,6 +504,10 @@ body {
     padding: 0.4rem;
     font-size: 12px;
   }
+
+  .search-results {
+    display: none;
+  }
 }
 
 @media (max-width: 410px) {
