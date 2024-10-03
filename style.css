@@ -59,6 +59,12 @@ body {
   gap: 0.5rem;
 }
 
+.sidebar-buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .sidebar {
   height: 100vh;
   width: 300px;
@@ -72,7 +78,7 @@ body {
   margin-left: 2rem;
   cursor: pointer;
   width: fit-content;
-  padding: 0.75rem;
+  padding: 0.5rem;
   background-color: transparent;
   color: var(--text-color);
   border: none;
@@ -97,7 +103,7 @@ body {
   margin-left: 2rem;
   cursor: pointer;
   width: fit-content;
-  padding: 0.6rem;
+  padding: 0.5rem;
   background-color: transparent;
   color: var(--text-color);
   border: none;
@@ -116,11 +122,6 @@ body {
   transform: scale(1.05);
   transition: all 0.3s ease;
   background-color: var(--primary-color-hex);
-}
-
-.sort-favorites::before {
-  content: "\2729";
-  padding-bottom: 0.2rem;
 }
 
 .sort-favorites-button-pressed {
@@ -197,7 +198,7 @@ body {
   margin-right: 0;
 }
 
-.svg-add {
+.svg {
   width: 1rem;
   height: 1rem;
 }
@@ -427,10 +428,10 @@ body {
 
   .sidebar-header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    align-items: first baseline;
-    /* align-items: flex-end; */
+    align-items: center;
+    gap: 4rem;
   }
 
   .form {
@@ -445,13 +446,15 @@ body {
 
   .create-new,
   .sort-favorites {
-    margin-right: 2rem;
+    margin: 0;
     font-size: 1rem;
     padding: 0.3rem;
   }
 
-  .create-new {
-    font-size: 1.05rem;
+  .sidebar-buttons-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
   }
 }
 

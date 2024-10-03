@@ -28,8 +28,9 @@ function displayNotesList(searchTerm = "") {
   const filteredNotes = isFavoritesOn
     ? notes.filter((note) => {
         return (
-          note.isFavorite && (note.title.toLowerCase().includes(searchTerm) ||
-          note.content.toLowerCase().includes(searchTerm))
+          note.isFavorite &&
+          (note.title.toLowerCase().includes(searchTerm) ||
+            note.content.toLowerCase().includes(searchTerm))
         );
       })
     : notes.filter((note) => {
@@ -95,7 +96,7 @@ function clickSaveButton() {
   const content = contentInputEl.value;
 
   if (!title || !content) {
-    alert("Please enter titel and notes");
+    alert("Bitte gebe ein Titel und ein paar Notizen ein.");
     return;
   }
 
