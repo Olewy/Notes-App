@@ -505,3 +505,11 @@ body {
     font-size: 12px;
   }
 }
+
+@media (max-width: 410px) {
+  .input-search-note {
+    min-width: 50%;
+    padding: 0.78rem 0.4rem;
+    font-size: 12px;
+  }
+}
