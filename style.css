@@ -145,7 +145,7 @@ body {
   border: 1px solid grey;
   border-radius: 8px;
   text-align: left;
-  padding-left: 0.5rem;
+  padding: 0.67rem;
 }
 
 .input-search-note::placeholder {
