@@ -431,7 +431,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 4rem;
+    gap: 2rem;
   }
 
   .form {
@@ -447,8 +447,9 @@ body {
   .create-new,
   .sort-favorites {
     margin: 0;
-    font-size: 1rem;
+    font-size: 12px;
     padding: 0.3rem;
+    text-align: left;
   }
 
   .sidebar-buttons-container {
