@@ -431,7 +431,8 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
+    margin-left: 1rem;
   }
 
   .form {
