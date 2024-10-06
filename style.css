@@ -13,7 +13,7 @@
   --icon-star: "\2605";
 }
 
-.white {
+.light {
   --primary-font: "Montserrat", sans-serif;
   --bg-color: #f9f6f6; /* Hintergrundfarbe */
   --primary-color: 58, 80, 107; /* Akzentfarbe (RGB-Wert) */
@@ -176,7 +176,7 @@ body {
 }
 
 .button,
-.dark-white-mode-button,
+.dark-light-mode-button,
 .favorite-button {
   width: fit-content;
   padding: 0.75rem;
@@ -194,7 +194,7 @@ body {
   gap: 0.5rem;
 }
 
-.dark-white-mode-button {
+.dark-light-mode-button {
   margin-left: auto;
   margin-right: 0;
 }
@@ -343,7 +343,7 @@ body {
 
 .save-note,
 .delete-note,
-.dark-white-mode-button::before,
+.dark-light-mode-button::before,
 .favorite-button::before {
   padding: 0.5rem 1rem;
   border: none;
@@ -367,7 +367,7 @@ body {
   background-color: #ff0000ac;
 }
 
-.dark-white-mode-button,
+.dark-light-mode-button,
 .favorite-button {
   width: fit-content;
 }
@@ -380,13 +380,13 @@ body {
   outline: 1px solid var(--focus);
 }
 
-.dark-white-mode-button::before {
+.dark-light-mode-button::before {
   content: var(--icon-circle);
   font-size: 1.1rem;
   transition: content 0.3s ease;
 }
 
-.dark-white-mode-button:hover::before,
+.dark-light-mode-button:hover::before,
 .favorite-button:hover::before {
   transform: scale(1.3);
   transition: all 0.2s;

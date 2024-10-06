@@ -8,6 +8,7 @@ const showFavoritesButton = document.getElementById("sortFavoriteNotes");
 const sidebarEl = document.querySelector(".sidebar");
 const searchNotesInput = document.getElementById("searchNotes");
 const searchButtonEl = document.getElementById("search");
+const favoriteButton = document.getElementById("favoriteButton");
 
 let isFavoritesOn = false;
 
@@ -15,6 +16,7 @@ saveButtonEl.addEventListener("click", clickSaveButton);
 deleteButtonEl.addEventListener("click", clickDeleteButton);
 createNewNoteEl.addEventListener("click", newNoteButton);
 showFavoritesButton.addEventListener("click", toggleFavoriteButton);
+favoriteButton.addEventListener("click", clickFavoriteButton);
 searchNotesInput.addEventListener("input", function () {
   const searchTerm = searchNotesInput.value.toLowerCase();
   displayNotesList(searchTerm);
@@ -27,17 +29,10 @@ function displayNotesList(searchTerm = "") {
 
   const filteredNotes = isFavoritesOn
     ? notes.filter((note) => {
-        return (
-          note.isFavorite &&
-          (note.title.toLowerCase().includes(searchTerm) ||
-            note.content.toLowerCase().includes(searchTerm))
-        );
+        return note.isFavorite && searchNotes(note, searchTerm);
       })
     : notes.filter((note) => {
-        return (
-          note.title.toLowerCase().includes(searchTerm) ||
-          note.content.toLowerCase().includes(searchTerm)
-        );
+        return searchNotes(note, searchTerm);
       });
 
   const sortedNotes = filteredNotes.sort(
@@ -49,26 +44,25 @@ function displayNotesList(searchTerm = "") {
   sortedNotes.forEach((note) => {
     html += `
           <div class="note-card" data-id="${note.id}" 
-          onclick="selectNote(${note.id})">
-          <h3 class="note-title">${escapeHtml(note.title)}</h3>
-          <p class="note-content-preview">
-            ${escapeHtml(note.content)}
-          </p>
-          <p class="note-date">
-          <svg id="starIcon" class="star-icon-disabled${
-            note.isFavorite ? " star-icon-enabled" : ""
-          }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+            onclick="selectNote(${note.id})">
+            <h3 class="note-title">${escapeHtml(note.title)}</h3>
+            <p class="note-content-preview"> ${escapeHtml(note.content)}</p>
+            <p class="note-date">
+            <svg id="starIcon" class="star-icon-disabled  
+              ${
+                note.isFavorite ? " star-icon-enabled" : ""
+              }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
             </svg>
             ${new Date(note.lastUpdated).toLocaleDateString("de-DE")}, 
             ${new Date(note.lastUpdated).toLocaleTimeString("de-DE")}
-          </p>
+            </p>
           </div>
           <div class="note-divider"></div>`;
   });
 
   notesListEl.innerHTML = html;
 
-  if (notesListEl.innerHTML == []) {
+  if (notesListEl.innerHTML == "") {
     let noNotesEl = document.createElement("p");
     noNotesEl.textContent = "noch keine Notizen hier";
     noNotesEl.classList.add("no-notes-text-enabled");
@@ -79,16 +73,47 @@ function displayNotesList(searchTerm = "") {
 function toggleFavoriteButton() {
   isFavoritesOn = !isFavoritesOn;
 
+  const showFavoritesButtonClass = "sort-favorites-button-pressed";
+
   if (isFavoritesOn) {
-    showFavoritesButton.classList.add("sort-favorites-button-pressed");
+    showFavoritesButton.classList.add(showFavoritesButtonClass);
   } else {
-    showFavoritesButton.classList.remove("sort-favorites-button-pressed");
+    showFavoritesButton.classList.remove(showFavoritesButtonClass);
   }
 
   displayNotesList();
 
   titleInputEl.value = "";
   contentInputEl.value = "";
+}
+
+function searchNotes(note, searchTerm) {
+  return (
+    note.title.toLowerCase().includes(searchTerm) ||
+    note.content.toLowerCase().includes(searchTerm)
+  );
+}
+
+function clickFavoriteButton() {
+  const notes = getNotes();
+
+  const currentlySelectedNoteEl = document.querySelector(".selected-note");
+
+  const starIcon = currentlySelectedNoteEl.querySelector(".star-icon-disabled");
+
+  let id = Number(currentlySelectedNoteEl.getAttribute("data-id"));
+
+  const selectedNoteFromLocalStorage = notes.find((note) => note.id === id);
+
+  if (selectedNoteFromLocalStorage.isFavorite === false) {
+    selectedNoteFromLocalStorage.isFavorite = true;
+    starIcon.classList.add("star-icon-enabled");
+  } else {
+    selectedNoteFromLocalStorage.isFavorite = false;
+    starIcon.classList.remove("star-icon-enabled");
+  }
+
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(notes));
 }
 
 function clickSaveButton() {
