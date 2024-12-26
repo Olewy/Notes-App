@@ -15,14 +15,14 @@
 
 .light {
   --primary-font: "Montserrat", sans-serif;
-  --bg-color: #f9f6f6; /* Hintergrundfarbe */
-  --primary-color: 58, 80, 107; /* Akzentfarbe (RGB-Wert) */
-  --primary-color-hex: #3a506b0f; /* Akzentfarbe (Hex-Wert) */
-  --secondary-color: #5bc0be; /* Sekundärfarbe */
-  --text-color: #0b132b; /* Textfarbe */
+  --bg-color: #f9f6f6;
+  --primary-color: 58, 80, 107;
+  --primary-color-hex: #3a506b0f; 
+  --secondary-color: #5bc0be;
+  --text-color: #0b132b; 
   --text-color-placeholder: #6c7a89;
-  --border-color: #e0e0e0; /* Randfarbe */
-  --shadow: 0 4px 6px #0000001f; /* Schattenfarbe */
+  --border-color: #e0e0e0; 
+  --shadow: 0 4px 6px #0000001f;
   --focus: #000000;
   --icon-circle: "\25D1";
   --box-shadow: #0000008e;
